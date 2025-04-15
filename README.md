@@ -40,17 +40,28 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 ### 4. 実行
+- sample-mcp-serverフォルダに.envファイルを作成し下記を設定する
+    ```
+    HOST=127.0.0.1
+    PORT=8001
+    ```
 - MCPサーバーの起動
-```bash
-cd sample-mcp-server
-python main.py
-```
+    ```bash
+    cd sample-mcp-server
+    python main.py
+    ```
+- sample-adk-agentフォルダに.envファイルを作成し下記を設定する
+    ```
+    SSE_SERVER_PARAMS_URL=http://localhost:8001/sse
+    MODEL=gemini-2.0-flash
+    GOOGLE_API_KEY=<your api key>
+    ```
 - ADK Web Serverの起動<br>
 ADK CLIを使用します
-```bash
-cd sample-adk-agent
-adk web
-```
+    ```bash
+    cd sample-adk-agent
+    adk web
+    ```
 #### 動作確認1
 1. ADK Web Serverを起動すると「For local testing, access at http://・・・」が表示されます<br>
 表示されたURLをクリックするとWEB GUIが起動されます
