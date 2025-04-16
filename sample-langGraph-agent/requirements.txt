@@ -1,0 +1,6 @@
+langgraph-cli[inmem]
+langchain-mcp-adapters
+langgraph
+langgraph-sdk
+langchain-openai
+python-dotenv
