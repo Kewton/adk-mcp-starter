@@ -10,7 +10,7 @@
     - ADK を通じて、ユーザーの自然言語リクエストを受け取ります
     - リクエストは MCP サーバーにルーティングされ、対応するエージェントへディスパッチされます
     - 結果をユーザーに自然言語でフィードバックします
-    ```Mermaid
+    ```mermaid
     graph LR
         ADK[Agent Development Kit] --> MCP[MCP Server<br>SSE]
         MCP --> tool_1
@@ -21,7 +21,7 @@
     - LangGraph を通じて、ユーザーの自然言語リクエストを受け取ります
     - リクエストは MCP サーバーにルーティングされ、対応するエージェントへディスパッチされます
     - 結果をユーザーに自然言語でフィードバックします
-    ```Mermaid
+    ```mermaid
     graph LR
         Graph[LangGraph] --> MCP[MCP Server<br>SSE]
         MCP --> tool_1
@@ -33,7 +33,7 @@
     - リクエストは ADKもしくはLangGraphで構築したエージェントに渡されたあと、 MCP サーバーにルーティングされ、対応するエージェントへディスパッチされます
     - 結果をユーザーに自然言語でフィードバックします
 
-    ```Mermaid
+    ```mermaid
     graph LR
         user --> FastAPI
         FastAPI --> Graph[LangGraph]
