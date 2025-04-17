@@ -1,0 +1,14 @@
+# fastAPI
+python-dotenv
+fastapi
+pydantic-settings
+uvicorn
+# adk
+google-adk
+google-genai
+httpx
+# LangGraph
+langchain-mcp-adapters
+langgraph
+langgraph-sdk
+langchain-openai

@@ -5,25 +5,19 @@ from langgraph.prebuilt import create_react_agent
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.messages.tool import ToolMessage
-from dotenv import load_dotenv
 import asyncio
-import os
 import json
-
-load_dotenv()
-
-SSE_SERVER_PARAMS_URL = os.getenv('SSE_SERVER_PARAMS_URL', "http://localhost:8001/sse")
-
-model = ChatOpenAI(model="gpt-4o-mini")
+from core.config import settings
 
 
 # Make the graph with MCP context
 @asynccontextmanager
 async def make_graph():
+    model = ChatOpenAI(model=settings.GRAPH_AGENT_MODEL)
     mcp_client = MultiServerMCPClient(
         {
             "my-mcp-tool": {
-                "url": SSE_SERVER_PARAMS_URL,
+                "url": settings.SSE_SERVER_PARAMS_URL,
                 "transport": "sse",
             }
         }
@@ -41,7 +35,7 @@ async def make_graph():
 
 
 # Run the graph with question
-async def main(query):
+async def ainvoke_graphagent(query):
     async with make_graph() as graph:
         result = await graph.ainvoke({"messages": query})
         # 1. 'messages' キーでメッセージリストを取得
@@ -85,7 +79,7 @@ async def main(query):
 if __name__ == '__main__':
     try:
         query = "https://github.com/Kewton/myaiagent の記事をマークダウン形式に変換して出力してください"
-        final_output = asyncio.run(main(query))
+        final_output = asyncio.run(ainvoke_graphagent(query))
         print("=====   Final Response =====")
         print(final_output["humanMessage"])
         print(final_output["aiMessage"])
