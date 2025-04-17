@@ -211,7 +211,7 @@ HOST=127.0.0.1
 PORT=8001
 ```
 
-**sample-langGraph-agent/.env**
+**sample-fast-api/.env**
 ```env
 OPENAI_API_KEY=<your api key>
 GOOGLE_API_KEY=<your api key>
